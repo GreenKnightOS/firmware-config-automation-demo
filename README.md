@@ -62,6 +62,20 @@ It also creates a timestamped backup and writes a validation report.
 python update_config.py
 ```
 
+## How to Run Tests
+
+```bash
+python -m unittest tests/test_update_config.py
+```
+
+The test suite checks that the tool can:
+
+* Read values from `specs.json`
+* Create a backup of the firmware file
+* Update C `#define` values correctly
+* Validate that the updated values were applied
+
+
 ## Skills Demonstrated
 
 * Python scripting
