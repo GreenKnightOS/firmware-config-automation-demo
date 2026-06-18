@@ -1,0 +1,11 @@
+{
+  "product_name": "Cryocooler DS Mini Example",
+  "nominal_heat_load_w": 1.8,
+  "nominal_input_power_w": 45,
+  "power_supply_voltage_v": 24,
+  "power_supply_current_limit_a": 6,
+  "temperature_stability_k": 0.1,
+  "lowest_temperature_limit_k": 40,
+  "operating_frequency_hz": 75,
+  "mttf_hours": 120000
+}
