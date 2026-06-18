@@ -4,3 +4,4 @@ __pycache__/
 .idea/
 backups/
 validation_report.txt
+reference_not_for_upload/reference_not_for_upload/
