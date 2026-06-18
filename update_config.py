@@ -1,4 +1,5 @@
 import json
+import sys
 import re
 from pathlib import Path
 
@@ -30,8 +31,14 @@ SPEC_TO_C_DEFINE = {
 
 
 def load_specs():
-    with open(SPECS_FILE, "r", encoding="utf-8") as file:
-        return json.load(file)
+    if not SPECS_FILE.exists():
+        raise FileNotFoundError(f"Missing specs file: {SPECS_FILE}")
+
+    try:
+        with open(SPECS_FILE, "r", encoding="utf-8") as file:
+            return json.load(file)
+    except json.JSONDecodeError as error:
+        raise ValueError(f"Invalid JSON in specs.json: {error}") from error
 
 
 def create_backup():
@@ -127,14 +134,27 @@ def write_report(backup_file, changes, validation_results):
 def main():
     print("Starting firmware config update...")
 
-    specs = load_specs()
-    backup_file = create_backup()
-    changes = update_firmware_config(specs)
-    validation_results = validate_updates(specs)
-    report_text = write_report(backup_file, changes, validation_results)
+    try:
+        specs = load_specs()
+        backup_file = create_backup()
+        changes = update_firmware_config(specs)
+        validation_results = validate_updates(specs)
+        report_text = write_report(backup_file, changes, validation_results)
 
-    print()
-    print(report_text)
+        print()
+        print(report_text)
+
+    except FileNotFoundError as error:
+        print(f"ERROR: {error}")
+        sys.exit(1)
+
+    except ValueError as error:
+        print(f"ERROR: {error}")
+        sys.exit(1)
+
+    except KeyError as error:
+        print(f"ERROR: Missing required spec value: {error}")
+        sys.exit(1)
 
 
 if __name__ == "__main__":
