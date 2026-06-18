@@ -1,10 +1,12 @@
 # Firmware Config Automation Demo
 
-A Python automation tool that updates hard-coded values in a C firmware configuration file using engineering specifications from a JSON file.
+A Python automation tool that updates hard-coded values in a C firmware configuration file using engineering 
+specifications from a JSON file.
 
 ## Why This Project Exists
 
-Firmware and embedded software projects often contain configuration values such as voltage limits, current limits, calibration gains, temperature cutoffs, and timing values.
+Firmware and embedded software projects often contain configuration values such as voltage limits, current limits, 
+calibration gains, temperature cutoffs, and timing values.
 
 Manually updating those values can be slow and error-prone.
 
@@ -15,7 +17,14 @@ This demo shows how a simple automation workflow can:
 * Create a backup before making changes
 * Validate that the updates were applied correctly
 * Generate a validation report
+## Use Case
 
+This project demonstrates how engineering configuration work can be automated to reduce manual editing errors.
+
+A workflow like this could be used when engineers need to update firmware constants from approved product specifications
+, calibration data, or datasheet-style values. Instead of manually editing hard-coded C values, the tool reads 
+structured JSON input, updates the matching firmware definitions, creates a backup, validates the changes, and 
+generates a report.
 ## Project Files
 
 ```text
@@ -31,7 +40,9 @@ firmware-config-automation-demo/
 
 This project includes a product-style specs example at `examples/ds_mini_specs_example.json`.
 
-The example shows how real datasheet-style values such as nominal input power, supply voltage, current limit, temperature stability, operating frequency, and MTTF could be represented in structured JSON before being used in an automation workflow.
+The example shows how real datasheet-style values such as nominal input power, supply voltage, current limit, 
+temperature stability, operating frequency, and MTTF could be represented in structured JSON before being used in an 
+automation workflow.
 
 ## Example Input
 
