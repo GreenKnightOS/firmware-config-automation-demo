@@ -27,6 +27,11 @@ firmware-config-automation-demo/
 ├── backups/
 └── README.md
 ```
+## Product-Style Example
+
+This project includes a product-style specs example at `examples/ds_mini_specs_example.json`.
+
+The example shows how real datasheet-style values such as nominal input power, supply voltage, current limit, temperature stability, operating frequency, and MTTF could be represented in structured JSON before being used in an automation workflow.
 
 ## Example Input
 
@@ -38,6 +43,7 @@ firmware-config-automation-demo/
   "temperature_cutoff": 85,
   "startup_delay_ms": 500
 }
+
 ```
 
 ## Example Firmware Config
